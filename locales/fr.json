@@ -1,0 +1,17 @@
+{
+  "general": {
+    "404": {
+      "title": "Pas trouve",
+      "subtext_html": "le pgw inreouble "
+    },
+    "Cart": {
+      "title": "Carte"
+    },
+    "Blog": {
+      "title": "Blog"
+    },
+    "Layout": {
+      "login_text": "Login"
+    }
+  }
+}
