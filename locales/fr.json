@@ -11,7 +11,9 @@
       "title": "Blog"
     },
     "Layout": {
-      "login_text": "Login"
+      "login_text": "Largin",
+      "register_text": "Registare",
+      "logout_text": "Largout"
     }
   }
 }
