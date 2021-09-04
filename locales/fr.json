@@ -13,7 +13,8 @@
     "Layout": {
       "login_text": "Largin",
       "register_text": "Registare",
-      "logout_text": "Largout"
+      "logout_text": "Largout",
+      "account_text": "Arrrccount"
     }
   }
 }

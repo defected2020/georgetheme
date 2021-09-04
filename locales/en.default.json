@@ -13,7 +13,8 @@
     "Layout": {
       "login_text": "Login",
       "register_text": "Register",
-      "logout_text": "Logout"
+      "logout_text": "Logout",
+      "account_text": "Account"
     }
   }
 }

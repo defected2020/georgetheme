@@ -3,7 +3,7 @@
       {% if error == 'form' %}
               {{ form.errors.messages[error] }}
       {% else %}
-                {{ form.errors.translated_fields[error] }} eat shit {{ form.errors.messages[error] }}
+                {{ form.errors.translated_fields[error] }}{{ form.errors.messages[error] }}
 
       {% endif %}
    </div>     
