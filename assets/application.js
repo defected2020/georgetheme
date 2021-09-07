@@ -30,6 +30,17 @@ if (document.getElementById('AddressCountryNew') != null ) {
       options += '<option value="' + provinceArray[i][0] + '">' + provinceArray[i][0] + '</option>';
     }
 
-    provinceSelector.innerHTML = options;
+    provinceSelector.innerHTML = options; 
   })
+}
+
+if(document.getElementById("forgotPassword") != null) {
+document.getElementById("forgotPassword").addEventListener("click", function(e) {
+  console.log(" I clicked");
+  const element = document.querySelector('#forgot_password_form');
+  if(element.classList.contains("d-none")) {
+    element.classList.remove("d-none");
+    element.classList.add("d-block");
+  }
+});
 }

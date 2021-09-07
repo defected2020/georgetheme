@@ -15,20 +15,19 @@
       
       {% endform %}
 
+      <a id="forgotPassword" href="#recover" class="text-center">Forgot your password?</a>
+  </div>
+  <div id="forgot_password_form" class="forgot-password-form d-none">
+  {%form 'recover_customer_password' %}
+  {% include 'form-error', form: form %}
+  
+  <div class="col-12">
+    <label for="resetPassword" class="form-label">Email Address</label>
+    <input class="form-control" type="email" name="email" id="resetPassword">
   </div>
   
-
+  <input type="submit" value="Reset Password" class="btn btn-secondary">
 </div>
+  {% endform %}
+  </div>
 
-
-<h2>Forgot Password</h2>
-{% form 'recover_customer_password' %}
-
-{{ form.errors | default_errors }}
-
-<label for="customer_email">Email Address</label>
-<input type="email" name="email" />
-
-<input type="submit" value="Submit" />
-
-{% endform %}
