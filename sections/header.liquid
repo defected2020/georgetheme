@@ -1,13 +1,21 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
+
+    {% if section.settings.logo != blank %}
+    <a class="navbar-brand" href= {{ section.settings.logo_url }}>
+    <img src="{{ section.settings.logo | img_url: 'master' }}" height="36" alt="">
+    </a>
+    {% else %}
+    
     <a class="navbar-brand" href="#">Navbar</a>
+    {% endif %}
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto">
                       {% for link in linklists.main-menu.links %}
-                  {% assign child_list_handle = link.title | handleize %}
+                  {% assign child_list_handle = link.title | handleize %} 
                   {% if linklists[child_list_handle].links != blank %}
                   <li class="nav-item"><a class="nav-link" href="{{ link.url }}">{{ link.title }}</a></li>
                     [{% for childlink in linklists[child_list_handle].links %}
@@ -16,7 +24,7 @@
                   {% else %}
                   <li class="nav-item"><a class="nav-link" href="{{ link.url }}">{{ link.title }}</a></li>
                   {% endif %}
-                {% endfor %}
+                {% endfor %} 
         <li class="nav-item">
 
           <a class="nav-link" href="/cart">Cartss</a>
@@ -55,4 +63,20 @@
 </nav>
 
 
-
+{% schema %}
+{
+"name": "Header",
+"settings": [
+{
+"type": "image_picker",
+"id": "logo",
+"label": "Logo Image"
+},
+{
+  "type": "url",
+  "id": "logo_url",
+  "label": "Logo URL"
+}
+]
+}
+{% endschema %}
