@@ -10,9 +10,11 @@
   {{ content_for_header }} <!-- Header hook for plugins -->
   {{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
   {{ 'application.css.scss' | asset_url | stylesheet_tag }}
+  {{ 'font-styles.css' | asset_url | stylesheet_tag }}
   
 </head>
 <body>
+  {% section 'translation' %}
 
 {% section 'header' %}
 

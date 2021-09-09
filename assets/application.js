@@ -44,3 +44,13 @@ document.getElementById("forgotPassword").addEventListener("click", function(e) 
   }
 });
 }
+
+var localeItems = document.querySelectorAll('#localeItem');
+if(localeItems.length > 0) {
+  localeItems.forEach(item => {
+    item.addEventListener("click", event => {
+      document.getElementById('localeCode').value = item.getAttribute("lang")
+      document.getElementById('localization_form_tag').submit();
+    })
+  })
+}
