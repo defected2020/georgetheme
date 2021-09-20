@@ -144,6 +144,7 @@ function update_cart() {
 
 var modalAddToCartForm = document.querySelector('#addToCartForm');
 
+if( modalAddToCartForm != null ) {
 modalAddToCartForm.addEventListener("submit", function(e) {
   e.preventDefault();
 
@@ -174,4 +175,41 @@ modalAddToCartForm.addEventListener("submit", function(e) {
   console.error('Error: ' + err);
   })
   }); 
+};
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  update_cart();
+})
+
+function update_cart() {
+  fetch('/cart.js')
+  .then((resp) => resp.json())
+  .then((data) => document.getElementById('numberOfCartItems').innerHTML = data.item_count) 
+  .catch((err) => console.error(err));
+
+}
+
+var predictiveSearchInput = document.getElementById('searchInputField'); 
+
+var timer;
+
+if(predictiveSearchInput != null) {
+  predictiveSearchInput.addEventListener('input', function(e){
+    console.log(predictiveSearchInput.value);
+
+    clearTimeout(timer);
+
+    if(predictiveSearchInput.value) {
+      timer = setTimeout(fetchPredictiveSearch, 3000);
+    }
+  });
+}
+
+function fetchPredictiveSearch(){
+  fetch(`/search/suggest.json?q=${predictiveSearchInput.value}&resources[type]=product`)
+  .then(resp => resp.json())
+  .then(data => console.log(data)); 
+}
 

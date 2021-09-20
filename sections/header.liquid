@@ -27,9 +27,9 @@
                 {% endfor %} 
         <li class="nav-item">
 
-          <a class="nav-link" href="/cart">Cart <span class="badge bg-danger rounded-pill">0</span></a>
+          <a class="nav-link" href="/cart">Cart <span id="numberOfCartItems" class="badge bg-danger rounded-pill">0</span></a> 
         </li>
-      </ul>
+      </ul> 
       <ul class="navbar-nav"> 
         {% if shop.customer_accounts_enabled %} 
         {% if customer %}
@@ -56,11 +56,22 @@
       </ul>
 
       <form action="/search" method="GET"  role="search">
-      <input type="text" name="q" value="{{ search.terms | escape }}">
+      <input type="text" name="q" value="{{ search.terms | escape }}" id="searchInputField">
       </form>
     </div>
-  </div>
+  </div> 
 </nav>
+
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasLabel">Product Seatch Result</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    Content for the offcanvas goes here. You can place just about any Bootstrap component or custom elements here.
+  </div>
+</div>
 
 
 {% schema %}
