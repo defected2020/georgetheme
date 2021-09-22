@@ -195,6 +195,9 @@ var predictiveSearchInput = document.getElementById('searchInputField');
 
 var timer;
 
+var offcanvasSearch = document.getElementById('offcanvasSearchResult');
+var bsOffcanvas = new bootstrap.Offcanvas(offcanvasSearch);
+
 if(predictiveSearchInput != null) {
   predictiveSearchInput.addEventListener('input', function(e){
     console.log(predictiveSearchInput.value);
@@ -207,9 +210,26 @@ if(predictiveSearchInput != null) {
   });
 }
 
-function fetchPredictiveSearch(){
+function fetchPredictiveSearch() {
   fetch(`/search/suggest.json?q=${predictiveSearchInput.value}&resources[type]=product`)
   .then(resp => resp.json())
-  .then(data => console.log(data)); 
-}
+  .then(data => {
+    console.log(data)
 
+    var products = data.resources.results.products;
+    document.getElementById('search_results_body').innerHTML = ''
+
+    products.forEach(function(product, index) {
+      document.getElementById('search_results_body').innerHTML += `
+      <div class="card" style="width: 10rem;">
+      <img src="${product.image} class="card-img-top">
+      <div class="card-body">
+      <h5 class="card-title">${product.title}</h5>
+      <p class="card-text">$${product.price}</p>
+      </div>
+      `
+    })
+
+    bsOffcanvas.show();
+  }); 
+}
